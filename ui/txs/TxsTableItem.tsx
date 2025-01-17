@@ -61,7 +61,7 @@ const TxsTableItem = ({ tx, showBlockInfo, currentAddress, enableTimeIncrement, 
       </Td>
       <Td>
         <VStack alignItems="start">
-          <TxType types={ tx.tx_types } isLoading={ isLoading }/>
+          <TxType types={ tx.transaction_types } isLoading={ isLoading }/>
           <TxStatus status={ tx.status } errorText={ tx.status === 'error' ? tx.result : undefined } isLoading={ isLoading }/>
           <TxWatchListTags tx={ tx } isLoading={ isLoading }/>
         </VStack>

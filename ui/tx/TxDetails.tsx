@@ -432,14 +432,14 @@ const TxDetails = () => {
             ) }
           </DetailsInfoItem>
         ) }
-        { data.tx_burnt_fee && !config.UI.views.tx.hiddenFields?.burnt_fees && !config.features.optimisticRollup.isEnabled && (
+        { data.transaction_burnt_fee && !config.UI.views.tx.hiddenFields?.burnt_fees && !config.features.optimisticRollup.isEnabled && (
           <DetailsInfoItem
             title="Burnt fees"
             hint={ `Amount of ${ currencyUnits.ether } burned for this transaction. Equals Block Base Fee per Gas * Gas Used` }
           >
             <IconSvg name="flame" boxSize={ 5 } color="gray.500"/>
             <CurrencyValue
-              value={ String(data.tx_burnt_fee) }
+              value={ String(data.transaction_burnt_fee) }
               currency={ currencyUnits.ether }
               exchangeRate={ data.exchange_rate }
               flexWrap="wrap"
