@@ -46,6 +46,7 @@ export type Transaction = {
   priority_fee: string | null;
   base_fee_per_gas: string | null;
   transaction_burnt_fee: string | null;
+  tx_burnt_fee: string | null;
   nonce: number;
   position: number | null;
   revert_reason: TransactionRevertReason | null;
