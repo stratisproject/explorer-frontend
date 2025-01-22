@@ -6,6 +6,7 @@ import type { Transaction, TransactionsSortingField, TransactionsSortingValue } 
 
 import config from 'configs/app';
 import { AddressHighlightProvider } from 'lib/contexts/addressHighlight';
+import useLazyRenderedList from 'lib/hooks/useLazyRenderedList';
 import { currencyUnits } from 'lib/units';
 import IconSvg from 'ui/shared/IconSvg';
 import * as SocketNewItemsNotice from 'ui/shared/SocketNewItemsNotice';
@@ -25,7 +26,7 @@ type Props = {
   currentAddress?: string;
   enableTimeIncrement?: boolean;
   isLoading?: boolean;
-}
+};
 
 const TxsTable = ({
   txs,
@@ -40,20 +41,34 @@ const TxsTable = ({
   enableTimeIncrement,
   isLoading,
 }: Props) => {
+  const { cutRef, renderedItemsNum } = useLazyRenderedList(txs, !isLoading);
+
+  const feeCurrency = config.UI.views.tx.hiddenFields?.fee_currency || config.chain.hasMultipleGasCurrencies ?
+    '' :
+    ' ' + currencyUnits.ether;
+
   return (
     <AddressHighlightProvider>
-      <Table variant="simple" minWidth="950px" size="xs">
+      <Table minWidth="950px">
         <TheadSticky top={ top }>
           <Tr>
             <Th width="54px"></Th>
-            <Th width="22%">Txn hash</Th>
+            <Th width="180px">Txn hash</Th>
             <Th width="160px">Type</Th>
             <Th width="20%">Method</Th>
-            { showBlockInfo && <Th width="18%">Block</Th> }
-            <Th width={{ base: '224px', xl: '360px' }}>From/To</Th>
+            { showBlockInfo && (
+              <Th width="18%">
+                <Link onClick={ isLoading ? undefined : sort('block_number') } display="flex" alignItems="center">
+                  { sorting === 'block_number-asc' && <IconSvg boxSize={ 5 } name="arrows/east" transform="rotate(-90deg)"/> }
+                  { sorting === 'block_number-desc' && <IconSvg boxSize={ 5 } name="arrows/east" transform="rotate(90deg)"/> }
+                  Block
+                </Link>
+              </Th>
+            ) }
+            <Th width="224px">From/To</Th>
             { !config.UI.views.tx.hiddenFields?.value && (
               <Th width="20%" isNumeric>
-                <Link onClick={ sort('value') } display="flex" justifyContent="end">
+                <Link onClick={ isLoading ? undefined : sort('value') } display="flex" alignItems="center" justifyContent="end">
                   { sorting === 'value-asc' && <IconSvg boxSize={ 5 } name="arrows/east" transform="rotate(-90deg)"/> }
                   { sorting === 'value-desc' && <IconSvg boxSize={ 5 } name="arrows/east" transform="rotate(90deg)"/> }
                   { `Value ${ currencyUnits.ether }` }
@@ -62,10 +77,10 @@ const TxsTable = ({
             ) }
             { !config.UI.views.tx.hiddenFields?.tx_fee && (
               <Th width="20%" isNumeric pr={ 5 }>
-                <Link onClick={ sort('fee') } display="flex" justifyContent="end">
+                <Link onClick={ isLoading ? undefined : sort('fee') } display="flex" alignItems="center" justifyContent="end">
                   { sorting === 'fee-asc' && <IconSvg boxSize={ 5 } name="arrows/east" transform="rotate(-90deg)"/> }
                   { sorting === 'fee-desc' && <IconSvg boxSize={ 5 } name="arrows/east" transform="rotate(90deg)"/> }
-                  { `Fee${ config.UI.views.tx.hiddenFields?.fee_currency ? '' : ` ${ currencyUnits.ether }` }` }
+                  { `Fee${ feeCurrency }` }
                 </Link>
               </Th>
             ) }
@@ -81,7 +96,7 @@ const TxsTable = ({
             />
           ) }
           <AnimatePresence initial={ false }>
-            { txs.map((item, index) => (
+            { txs.slice(0, renderedItemsNum).map((item, index) => (
               <TxsTableItem
                 key={ item.hash + (isLoading ? index : '') }
                 tx={ item }
@@ -94,6 +109,7 @@ const TxsTable = ({
           </AnimatePresence>
         </Tbody>
       </Table>
+      <div ref={ cutRef }/>
     </AddressHighlightProvider>
   );
 };

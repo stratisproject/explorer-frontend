@@ -1,5 +1,5 @@
 import type { RawTracesResponse } from 'types/api/rawTrace';
-import type { Transaction } from 'types/api/transaction';
+import type { Transaction, TransactionsStats } from 'types/api/transaction';
 
 import { ADDRESS_PARAMS } from './addressParams';
 
@@ -12,7 +12,7 @@ export const TX: Transaction = {
     value: '2100000000000000',
   },
   gas_limit: '21000',
-  block: 9004925,
+  block_number: 9004925,
   status: 'ok',
   method: 'placeholder',
   confirmations: 71,
@@ -35,7 +35,7 @@ export const TX: Transaction = {
   created_contract: null,
   position: 0,
   nonce: 295929,
-  has_error_in_internal_txs: false,
+  has_error_in_internal_transactions: false,
   actions: [],
   decoded_input: null,
   token_transfers_overflow: false,
@@ -59,3 +59,10 @@ export const TX_ZKEVM_L2: Transaction = {
 };
 
 export const TX_RAW_TRACE: RawTracesResponse = [];
+
+export const TXS_STATS: TransactionsStats = {
+  pending_transactions_count: '4200',
+  transaction_fees_avg_24h: '22342870314428',
+  transaction_fees_sum_24h: '22184012506492688277',
+  transactions_count_24h: '992890',
+};

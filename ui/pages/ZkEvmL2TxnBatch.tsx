@@ -16,8 +16,8 @@ import PageTitle from 'ui/shared/Page/PageTitle';
 import useQueryWithPages from 'ui/shared/pagination/useQueryWithPages';
 import RoutedTabs from 'ui/shared/Tabs/RoutedTabs';
 import TabsSkeleton from 'ui/shared/Tabs/TabsSkeleton';
+import ZkEvmL2TxnBatchDetails from 'ui/txnBatches/zkEvmL2/ZkEvmL2TxnBatchDetails';
 import TxsWithFrontendSorting from 'ui/txs/TxsWithFrontendSorting';
-import ZkEvmL2TxnBatchDetails from 'ui/zkEvmL2TxnBatches/ZkEvmL2TxnBatchDetails';
 
 const ZkEvmL2TxnBatch = () => {
   const router = useRouter();
@@ -59,7 +59,7 @@ const ZkEvmL2TxnBatch = () => {
     }
 
     return {
-      label: 'Back to tx batches list',
+      label: 'Back to txn batches list',
       url: appProps.referrer,
     };
   }, [ appProps.referrer ]);
@@ -68,7 +68,7 @@ const ZkEvmL2TxnBatch = () => {
     <>
       <TextAd mb={ 6 }/>
       <PageTitle
-        title={ `Tx batch #${ number }` }
+        title={ `Txn batch #${ number }` }
         backLink={ backLink }
       />
       { batchQuery.isPlaceholderData ? <TabsSkeleton tabs={ tabs }/> : (
