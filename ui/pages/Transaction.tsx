@@ -58,7 +58,7 @@ const TransactionPageContent = () => {
   const tags = (
     <EntityTags
       isLoading={ isPlaceholderData }
-      tagsBefore={ [ data?.tx_tag ? { label: data.tx_tag, display_name: data.tx_tag } : undefined ] }
+      tagsBefore={ [ data?.transaction_tag ? { label: data.transaction_tag, display_name: data.transaction_tag } : undefined ] }
     />
   );
 
@@ -75,7 +75,7 @@ const TransactionPageContent = () => {
     };
   }, [ appProps.referrer ]);
 
-  const titleSecondRow = <TxSubHeading hash={ hash } hasTag={ Boolean(data?.tx_tag) }/>;
+  const titleSecondRow = <TxSubHeading hash={ hash } hasTag={ Boolean(data?.transaction_tag) }/>;
 
   return (
     <>

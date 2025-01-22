@@ -59,9 +59,9 @@ export const base: Transaction = {
   },
   token_transfers: [],
   token_transfers_overflow: false,
-  tx_burnt_fee: '461030000000000',
-  tx_tag: null,
-  tx_types: [
+  transaction_burnt_fee: '461030000000000',
+  transaction_tag: null,
+  transaction_types: [
     'contract_call',
   ],
   type: 2,
@@ -101,7 +101,7 @@ export const withContractCreation: Transaction = {
     watchlist_names: [],
     ens_domain_name: null,
   },
-  tx_types: [
+  transaction_types: [
     'contract_creation',
   ],
 };
@@ -129,7 +129,7 @@ export const withTokenTransfer: Transaction = {
     tokenTransferMock.erc1155D,
   ],
   token_transfers_overflow: true,
-  tx_types: [
+  transaction_types: [
     'token_transfer',
   ],
 };
@@ -193,8 +193,8 @@ export const pending: Transaction = {
   revert_reason: null,
   status: null,
   timestamp: null,
-  tx_burnt_fee: null,
-  tx_tag: null,
+  transaction_burnt_fee: null,
+  transaction_tag: null,
   type: null,
   value: '0',
 };

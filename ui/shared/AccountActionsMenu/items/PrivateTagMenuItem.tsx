@@ -44,7 +44,7 @@ const PrivateTagMenuItem = ({ className, hash, onBeforeClick, type = 'address' }
     queryData &&
     (
       ('private_tags' in queryData && queryData.private_tags?.length) ||
-      ('tx_tag' in queryData && queryData.tx_tag)
+      ('transaction_tag' in queryData && queryData.transaction_tag)
     )
   ) {
     return null;
