@@ -39,7 +39,7 @@ const Footer = () => {
   //const issueUrl = useIssueUrl(backendVersionData?.backend_version);
   const BLOCKSCOUT_LINKS = [
     {
-      icon: 'social/tweet' as const,
+      icon: 'social/twitter' as const,
       iconSize: '18px',
       text: 'Twitter',
       url: 'https://twitter.com/stratisplatform',
@@ -51,7 +51,7 @@ const Footer = () => {
       url: 'https://discordapp.com/invite/9tDyfZs',
     },
     {
-      icon: 'discussions' as const,
+      icon: 'social/git' as const,
       iconSize: '20px',
       text: 'GitHub',
       url: 'https://github.com/stratisproject',
