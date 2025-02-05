@@ -108,14 +108,14 @@ const Footer = () => {
     return (
       <Box gridArea={ gridArea }>
         <Flex columnGap={ 2 } fontSize="xs" lineHeight={ 5 } alignItems="center" color="text">
-          <span>Made with</span>
-          <Link href="https://www.stratisplatform.com" isExternal display="inline-flex" color={ logoColor } _hover={{ color: logoColor }}>
+          <span>&nbsp;</span>
+          {/* <Link href="https://www.stratisplatform.com" isExternal display="inline-flex" color={ logoColor } _hover={{ color: logoColor }}>
             <IconSvg
               name="networks/logo-placeholder"
               width="80px"
               height={ 4 }
             />
-          </Link>
+          </Link> */}
         </Flex>
         <Text mt={ 3 } fontSize="xs">
           Stratis Blockchain Consultancy has an in-house team dedicated to building applied blockchain solutions for enterprise clients.
@@ -132,7 +132,7 @@ const Footer = () => {
             </Text>
           ) }
           <Text>
-            Copyright { copy } Blockscout Limited 2023-{ (new Date()).getFullYear() }
+            Copyright { copy } Stratis Platform Limited { (new Date()).getFullYear() }
           </Text>
         </Box>
       </Box>
