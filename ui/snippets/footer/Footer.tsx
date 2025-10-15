@@ -118,7 +118,7 @@ const Footer = () => {
           </Link> */}
         </Flex>
         <Text mt={ 3 } fontSize="xs">
-          Stratis Blockchain Consultancy has an in-house team dedicated to building applied blockchain solutions for enterprise clients.
+          Xertra Blockchain Consultancy has an in-house team dedicated to building applied blockchain solutions for enterprise clients.
         </Text>
         <Box mt={ 6 } alignItems="start" fontSize="xs" lineHeight={ 5 }>
           { apiVersionUrl && (
@@ -132,7 +132,7 @@ const Footer = () => {
             </Text>
           ) }
           <Text>
-            Copyright { copy } Stratis Platform Limited { (new Date()).getFullYear() }
+            Copyright { copy } Xertra Platform Limited { (new Date()).getFullYear() }
           </Text>
         </Box>
       </Box>
@@ -192,7 +192,7 @@ const Footer = () => {
           >
             {
               ([
-                { title: 'Stratis Platform', links: BLOCKSCOUT_LINKS },
+                { title: 'Xertra Platform', links: BLOCKSCOUT_LINKS },
                 ...(linksData || []),
               ])
                 .slice(0, colNum)

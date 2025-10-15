@@ -3,7 +3,7 @@ import type { Route } from 'nextjs-routes';
 
 // equal og:description
 // eslint-disable-next-line max-len
-const DEFAULT_TEMPLATE = 'Stratis Blockchain Explorer and Statistics. Access detailed blockchain information on Stratis (STRAX) transactions, blocks and addresses.';
+const DEFAULT_TEMPLATE = 'Xertra Blockchain Explorer and Statistics. Access detailed blockchain information on Xertra (STRAX) transactions, blocks and addresses.';
 
 // FIXME all page descriptions will be updated later
 const TEMPLATE_MAP: Record<Route['pathname'], string> = {
